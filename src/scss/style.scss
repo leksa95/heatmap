@@ -1,0 +1,105 @@
+@import "vars";
+@import "fonts";
+@import "header";
+@import "footer";
+
+html, body {
+  font-family: $font-stack;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.point {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: black;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  transition: all .3s ease-in-out;
+
+  .pointInfo {
+    pointer-events: none;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    transform: translate(-50%, -15%);
+    opacity: 0;
+    transition: all .3s ease-in-out;
+  }
+
+  &:hover {
+    .pointInfo {
+      transform: translate(-50%, -5%);
+      opacity: 1;
+    }
+  }
+
+  &.added {
+    transform: scale(1.5);
+  }
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &.click {
+    background: red;
+  }
+
+  &.touchstart {
+    background: green;
+  }
+
+  &.touchend {
+    background: blue;
+  }
+
+  &.touchmove {
+    background: orange;
+  }
+
+  &.touchcancel {
+    background: pink;
+  }
+
+  &.mousedown {
+    background: yellow;
+  }
+
+  &.mouseup {
+    background: grey;
+  }
+}
+
+.filter {
+  position: fixed;
+  z-index: 1;
+  left: 15px;
+  top: 15px;
+  display: flex;
+  flex-direction: column;
+
+  .filterItem {
+    border: 1px solid black;
+    padding: 15px;
+    transition: all .3s ease-in-out;
+
+    &:not(:last-child) {
+      margin-bottom: 5px;
+    }
+
+    &.active,
+    &:hover {
+      cursor: pointer;
+      background: black;
+      color: white;
+    }
+  }
+}
